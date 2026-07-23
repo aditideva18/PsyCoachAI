@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conflict Coach | PsyCoach AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-primary": "#c3c0ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-container": "#54647a",
+                        "tertiary-container": "#006e4b",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-container": "#4f46e5",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary-fixed": "#e2dfff",
+                        "secondary-container": "#d0e1fb",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface": "#191c1e",
+                        "on-background": "#191c1e",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "on-surface-variant": "#464555",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#67f4b7",
+                        "on-secondary-fixed": "#0b1c30",
+                        "tertiary": "#005338",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#0f0069",
+                        "on-primary-container": "#dad7ff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2d3133",
+                        "surface-dim": "#d8dadc",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-low": "#f2f4f6",
+                        "outline-variant": "#c7c4d8",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-container": "#eceef0",
+                        "primary": "#3525cd",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#4d44e3",
+                        "secondary": "#505f76",
+                        "outline": "#777587"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "container-max": "1200px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .card-shadow { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .glass-header { backdrop-filter: blur(8px); background: rgba(247, 249, 251, 0.8); }
+        
+        /* Analysis inner list styling */
+        #analysis ul, #rewriteOut ul, #perspectiveOut ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        #analysis li, #rewriteOut li, #perspectiveOut li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 14px;
+            color: #464555;
+        }
+        #analysis li::before, #rewriteOut li::before, #perspectiveOut li::before {
+            content: "•";
+            color: #4f46e5;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .alert.error {
+            background-color: #ffdad6;
+            color: #ba1a1a;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .alert.success {
+            background-color: #EEF2FF;
+            color: #3525cd;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3525cd;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Anchor -->
+<header class="sticky top-0 z-50 glass-header w-full shadow-sm">
+<div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">PsyCoach AI</span>
+</div>
+<nav class="hidden md:flex gap-md items-center">
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#">Practice</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Conflict</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#">History</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-secondary">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden border-2 border-white">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a friendly female psychologist with a warm smile, wearing a professional navy blazer. The background is a soft, blurred modern office space with natural light. The visual style is high-end, clean, and corporate minimalist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsG5Fx6cBfI0YWdI7PCDqWZUJpXAoip2s1a6CUU6LamYjY_MrUe_HVMn9madA1I23HK7kz_fqbj6Tr18ZjzPGioeIzQmqc3MRWlHL115HAVk7DQhvaB47J8jOGzS_hUWpqLJefb3gvi2WxFTqw0WpFFhqF7a3ClE-S6mpHGt8SXvJ8vMd4BNqupqa-Vb4nJVANsdzSddgPq97RI8nJkuSb1ByJBl-BzuyXgXYOQfiv7Vul085sxoiV3yYfB9ZKHMrUzuqzShaXtVM"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md py-lg pb-32 md:pb-12">
+<!-- Header Section -->
+<header class="mb-lg max-w-3xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Conflict Resolution Coach</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Transform difficult conversations into opportunities for growth. Our AI-driven mentor helps you analyze transcripts, rewrite messages, and see through the eyes of others.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Module 1: Analyze Transcript -->
+<section class="lg:col-span-7 flex flex-col gap-sm">
+<div class="bg-surface-container-lowest p-md rounded-xl card-shadow border border-surface-variant/30 transition-all hover:border-primary/20">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 bg-primary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Analyze Transcript</h2>
+</div>
+<div class="space-y-sm">
+<div class="relative">
+<label class="block font-label-sm text-label-sm text-outline mb-1 ml-1" for="role">Your Role</label>
+<input class="w-full bg-surface-container-low border-0 rounded-lg px-md py-sm font-body-md text-body-md focus:ring-2 focus:ring-primary/20 transition-all" id="role" placeholder="e.g. Project Manager, Partner" type="text"/>
+</div>
+<div class="relative">
+<label class="block font-label-sm text-label-sm text-outline mb-1 ml-1" for="transcript">Conversation</label>
+<textarea class="w-full bg-surface-container-low border-0 rounded-lg px-md py-sm font-body-md text-body-md focus:ring-2 focus:ring-primary/20 transition-all custom-scrollbar resize-none" id="transcript" placeholder="Paste the conversation history here..." rows="10"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-sm rounded-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-xs" id="analyze">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+                            Run AI Analysis
+                        </button>
+</div>
+<div class="mt-md font-body-md text-body-md text-on-surface-variant empty:hidden animate-in fade-in slide-in-from-top-2 duration-300" id="analysis">
+<!-- Output Injection Point -->
+</div>
+</div>
+</section>
+<!-- Right Column Grid -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<!-- Module 2: Rewrite a Message -->
+<section class="bg-surface-container-lowest p-md rounded-xl card-shadow border border-surface-variant/30 transition-all hover:border-primary/20">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 bg-secondary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">edit_note</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Rewrite a Message</h2>
+</div>
+<div class="space-y-sm">
+<textarea class="w-full bg-surface-container-low border-0 rounded-lg px-md py-sm font-body-md text-body-md focus:ring-2 focus:ring-primary/20 transition-all resize-none" id="rewriteMessage" placeholder="Type the message you want to send..." rows="3"></textarea>
+<div class="grid grid-cols-2 gap-sm">
+<div class="col-span-1">
+<label class="block font-label-sm text-label-sm text-outline mb-1 ml-1">Tone Style</label>
+<select class="w-full bg-surface-container-low border-0 rounded-lg px-sm py-sm font-label-md text-label-md focus:ring-2 focus:ring-primary/20 cursor-pointer" id="style">
+                                    {% for s in rewrite_styles %} 
+                                        <option value="{{ s }}">{{ s|title }}</option> 
+                                    {% endfor %}
+                                    <!-- Fallback if Jinja tags aren't processed -->
+<option value="empathetic">Empathetic</option>
+<option value="assertive">Assertive</option>
+<option value="professional">Professional</option>
+<option value="curious">Curious</option>
+</select>
+</div>
+<div class="col-span-1">
+<label class="block font-label-sm text-label-sm text-outline mb-1 ml-1">Context (Optional)</label>
+<textarea class="w-full bg-surface-container-low border-0 rounded-lg px-sm py-sm font-label-md text-label-md focus:ring-2 focus:ring-primary/20 resize-none" id="context" placeholder="e.g. Asking for a deadline" rows="1"></textarea>
+</div>
+</div>
+<button class="w-full bg-secondary text-on-secondary font-label-md text-label-md py-sm rounded-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-xs" id="rewrite">
+<span class="material-symbols-outlined text-[20px]">magic_button</span>
+                            Polish Message
+                        </button>
+<div class="mt-sm font-body-md text-body-md empty:hidden" id="rewriteOut">
+<!-- Output Injection Point -->
+</div>
+</div>
+</section>
+<!-- Module 3: Perspective Switch -->
+<section class="bg-surface-container-lowest p-md rounded-xl card-shadow border border-surface-variant/30 transition-all hover:border-primary/20 overflow-hidden relative">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 bg-tertiary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">theater_comedy</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Perspective Switch</h2>
+</div>
+<div class="space-y-sm">
+<textarea class="w-full bg-surface-container-low border-0 rounded-lg px-md py-sm font-body-md text-body-md focus:ring-2 focus:ring-primary/20 transition-all resize-none" id="selected" placeholder="Select or paste a specific message from the other person to understand their potential intent..." rows="4"></textarea>
+<button class="w-full bg-tertiary text-on-tertiary font-label-md text-label-md py-sm rounded-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-xs" id="perspective">
+<span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+                            Step into Their Shoes
+                        </button>
+<div class="mt-sm font-body-md text-body-md empty:hidden" id="perspectiveOut">
+<!-- Output Injection Point -->
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs py-base md:hidden bg-surface shadow-lg rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-sm text-[10px]">Practice</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-label-sm text-[10px]">Conflict</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-sm text-[10px]">History</span>
+</button>
+</nav>
+<!-- Scripts Block -->
+<script>
+    const q=id=>document.getElementById(id);
+    async function api(url,data){
+        let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+        let j=await r.json();
+        if(!r.ok||!j.success)throw new Error(j.message||'Request failed');
+        return j.data
+    }
+    function list(a){
+        return '<ul>'+(a||[]).map(x=>'<li>'+x+'</li>').join('')+'</ul>'
+    }
+
+    q('analyze').onclick=async()=>{
+        try {
+            q('analyze').innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Analyzing...';
+            let d=await api('/api/conflict/analyze',{transcript:q('transcript').value,user_role:q('role').value});
+            if(d.crisis_detected){
+                q('analysis').innerHTML='<div class="alert error">'+d.message+'</div>';
+                return
+            }
+            let a=d.analysis;
+            q('analysis').innerHTML=`<h3 class="font-headline-md text-primary mt-2">${a.primary_issue||''}</h3><p class="text-on-surface-variant my-2">${a.summary||''}</p><h4 class="font-label-md text-on-surface font-bold mt-4">Next steps</h4>${list(a.recommended_next_steps)}<div class="flex justify-end mt-4"><a class='inline-flex items-center gap-1 font-label-md text-primary hover:underline' href='/report/${d.analysis_id}'><span class="material-symbols-outlined text-[18px]">open_in_new</span>Open saved report</a></div>`;
+        } catch(e) {
+            q('analysis').innerHTML='<div class="alert error">'+e.message+'</div>'
+        } finally {
+            q('analyze').innerHTML = '<span class="material-symbols-outlined text-[20px]">psychology</span> Run AI Analysis';
+        }
+    };
+
+    q('rewrite').onclick=async()=>{
+        try {
+            q('rewrite').innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Rewriting...';
+            let d=await api('/api/conflict/rewrite',{message:q('rewriteMessage').value,style:q('style').value,context:q('context').value});
+            q('rewriteOut').innerHTML=d.crisis_detected?'<div class="alert error">'+d.message+'</div>':`<div class='alert success'>${d.rewritten_message||''}</div><div class="bg-surface-container p-sm rounded-lg"><h4 class="font-label-sm text-outline uppercase tracking-wider mb-2">Key Adjustments</h4>${list(d.changes)}<p class="text-on-surface-variant italic mt-2">${d.why_it_may_help||''}</p></div>`;
+        } catch(e) {
+            q('rewriteOut').innerHTML='<div class="alert error">'+e.message+'</div>'
+        } finally {
+            q('rewrite').innerHTML = '<span class="material-symbols-outlined text-[20px]">magic_button</span> Polish Message';
+        }
+    };
+
+    q('perspective').onclick=async()=>{
+        try {
+            q('perspective').innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Switching...';
+            let d=await api('/api/conflict/perspective',{transcript:q('transcript').value,selected_message:q('selected').value});
+            q('perspectiveOut').innerHTML=d.crisis_detected?'<div class="alert error">'+d.message+'</div>':`<h4 class="font-label-md text-on-surface font-bold mt-4">Possible interpretations</h4>${list((d.possible_interpretations||[]).map(x=>`<span class="font-bold text-primary">${x.interpretation}</span> — ${x.why}`))} <div class="mt-4 pt-4 border-t border-surface-variant"><h4 class="font-label-sm text-outline uppercase mb-2">Reframed communication</h4><div class='alert success'>${d.clearer_version||''}</div></div>`;
+        } catch(e) {
+            q('perspectiveOut').innerHTML='<div class="alert error">'+e.message+'</div>'
+        } finally {
+            q('perspective').innerHTML = '<span class="material-symbols-outlined text-[20px]">swap_horiz</span> Step into Their Shoes';
+        }
+    };
+    </script>
+</body></html>

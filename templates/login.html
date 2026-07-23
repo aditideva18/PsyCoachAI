@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - PsyCoach AI</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Manrope -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#4edea3",
+                    "primary-fixed": "#e2dfff",
+                    "outline-variant": "#c7c4d8",
+                    "on-error": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "surface-variant": "#e0e3e5",
+                    "on-tertiary-fixed": "#002113",
+                    "on-secondary-fixed": "#0b1c30",
+                    "surface-container-high": "#e6e8ea",
+                    "primary": "#3525cd",
+                    "on-primary-fixed": "#0f0069",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-tint": "#4d44e3",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface": "#f7f9fb",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4f6",
+                    "outline": "#777587",
+                    "secondary": "#505f76",
+                    "on-tertiary-container": "#67f4b7",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#54647a",
+                    "inverse-surface": "#2d3133",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "tertiary-fixed": "#6ffbbe",
+                    "inverse-primary": "#c3c0ff",
+                    "on-surface-variant": "#464555",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary-container": "#006e4b",
+                    "background": "#f7f9fb",
+                    "on-primary-container": "#dad7ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container": "#eceef0",
+                    "on-background": "#191c1e",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "secondary-container": "#d0e1fb",
+                    "tertiary": "#005338",
+                    "primary-container": "#4f46e5",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d8dadc",
+                    "secondary-fixed": "#d3e4fe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "xl": "80px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "lg": "48px",
+                    "md": "24px",
+                    "gutter": "24px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Manrope"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .soft-elevation {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+        .form-focus-ring:focus {
+            outline: none;
+            border-color: #3525cd;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        .glass-background {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- Subtle Animated Background -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-40">
+
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center p-md relative z-10">
+<div class="w-full max-w-[440px] animate-in fade-in slide-in-from-bottom-4 duration-700">
+<!-- Brand Anchor -->
+<div class="text-center mb-lg">
+<div class="inline-flex items-center justify-center p-sm bg-surface-container-highest rounded-xl mb-base">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">PsyCoach AI</h1>
+<p class="font-body-md text-secondary mt-xs">Step back into guided clarity.</p>
+</div>
+<!-- Login Card -->
+<div class="bg-surface-container-lowest rounded-xl p-lg soft-elevation border border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md mb-lg text-on-surface">Login</h2>
+<!-- Flash Message Block -->
+                {% if error %}
+                <div class="mb-md p-sm bg-error-container text-on-error-container rounded-lg flex items-center gap-sm animate-pulse">
+<span class="material-symbols-outlined text-error">report</span>
+<p class="font-label-md">{{ error }}</p>
+</div>
+                {% endif %}
+
+                <form action="" class="space-y-md" method="POST">
+<!-- Email Input -->
+<div class="space-y-xs">
+<label class="font-label-md text-on-surface-variant block" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-[42px] pr-md py-sm bg-surface border border-outline-variant rounded-lg font-body-md text-on-surface form-focus-ring transition-all placeholder:text-outline/50" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-on-surface-variant block" for="password">Password</label>
+<a class="font-label-sm text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-[42px] pr-md py-sm bg-surface border border-outline-variant rounded-lg font-body-md text-on-surface form-focus-ring transition-all placeholder:text-outline/50" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary text-on-primary font-label-md py-sm px-md rounded-lg hover:bg-primary-container transition-all active:scale-[0.98] flex items-center justify-center gap-sm mt-lg" type="submit">
+<span>Sign In</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="flex items-center my-lg gap-base">
+<div class="h-[1px] flex-grow bg-outline-variant opacity-30"></div>
+<span class="font-label-sm text-outline uppercase tracking-wider">or</span>
+<div class="h-[1px] flex-grow bg-outline-variant opacity-30"></div>
+</div>
+<!-- Secondary Option -->
+<div class="text-center">
+<p class="font-body-md text-on-surface-variant">
+                        Don't have an account? 
+                        <a class="text-primary font-semibold hover:underline" href="/register">Create Account</a>
+</p>
+</div>
+</div>
+<!-- Footer Meta -->
+<footer class="mt-lg text-center">
+<div class="flex justify-center gap-md mb-base">
+<a class="font-label-sm text-outline hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-outline hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex items-center justify-center gap-xs opacity-40">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></div>
+<p class="text-[10px] font-label-sm text-on-surface uppercase tracking-[0.2em]">Secure AI Protocols Active</p>
+</div>
+</footer>
+</div>
+</main>
+<!-- Side Visual Illustration (Hidden on mobile) -->
+<div class="hidden lg:block fixed right-[-10%] top-1/2 -translate-y-1/2 w-[40%] aspect-square opacity-20 pointer-events-none">
+<div class="w-full h-full bg-cover bg-center rounded-full" data-alt="A serene, minimalist digital art piece showing soft gradients of indigo and sage green swirling into a central point of light. The aesthetic is modern and corporate yet deeply calming, representing interpersonal harmony and mental clarity. Soft, diffused lighting creates a safe space atmosphere for a coaching professional platform." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTldCGjrAV4iY9mdNLdUC-3-UYUJqk1RR4VA9s978K5jVrdGlY0tPmRG-mvzTbaluEC_LIvVGX1hS13StknyLlmYnWYBbOhrboEqAm1veeCKRpFnj8cUbBnsR_AEOIDKaadGJvpv2ury1zTM2-ue4a_8DOllpYAsJu0qQMooZdhzjc-2w8cLnUpkuSKLsFrzPSqyv4YQyzMf05uE-DtQtHbOBRPc-eoTFkEGhQZ32NokQZx_IO2aWFsiWUpPd_bJtXUa1Mu2naLc0')">
+</div>
+</div>
+<!-- Interaction Script -->
+<script>
+        // Micro-interaction for input fields
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#3525cd';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '';
+            });
+        });
+    </script>
+</body></html>

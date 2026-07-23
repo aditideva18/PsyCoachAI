@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PsyCoach AI | Guided Clarity</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#4edea3",
+                        "primary-fixed": "#e2dfff",
+                        "outline-variant": "#c7c4d8",
+                        "on-error": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-container-high": "#e6e8ea",
+                        "primary": "#3525cd",
+                        "on-primary-fixed": "#0f0069",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-tint": "#4d44e3",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f2f4f6",
+                        "outline": "#777587",
+                        "secondary": "#505f76",
+                        "on-tertiary-container": "#67f4b7",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "inverse-surface": "#2d3133",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed": "#6ffbbe",
+                        "inverse-primary": "#c3c0ff",
+                        "on-surface-variant": "#464555",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-container": "#006e4b",
+                        "background": "#f7f9fb",
+                        "on-primary-container": "#dad7ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container": "#eceef0",
+                        "on-background": "#191c1e",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "secondary-container": "#d0e1fb",
+                        "tertiary": "#005338",
+                        "primary-container": "#4f46e5",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-elevation {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto">
+<div class="flex items-center gap-base">
+<span class="font-headline-md text-headline-md font-bold text-primary">PsyCoach AI</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#">Practice</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#">Conflict</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#">History</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="hidden md:block font-label-md text-label-md text-secondary hover:text-primary">Logout</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist profile portrait of a diverse professional person looking serene and confident. The lighting is soft and studio-like, with a pale blue-grey background that matches the modern corporate aesthetic of the UI. The style is crisp and professional, conveying reliability and approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2C9w0xjyzaHI6IBOgAY7481Jq5lmLLt1kVzYR9LlMh460kG8PlyGuuxMGyghNIATBEKBuXuJVAYAss9VGX5wMnGyfauugacEvEfl-Vha06oYOOo_gmww6SejHe0nOSlqUeel9M-Lp61fOWvxOFYu0-Ha4_8GBWICmcXTHGDOcT1miJiGiW859UMaFEusYjHO8ryr8Vkem11E_A0IRZRdnysMrGqkLcIZLV9renp125wa5gZojWLG2a5V15MIx8cs_WM311pIIasI"/>
+</div>
+</div>
+</div>
+</header>
+<main class="relative min-h-screen">
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-xl pb-lg px-md">
+<div class="absolute inset-0 z-0 opacity-40">
+
+</div>
+<div class="relative z-10 max-w-container-max mx-auto text-center md:text-left flex flex-col md:flex-row items-center gap-lg">
+<div class="flex-1 space-y-md">
+<div class="inline-flex items-center gap-xs px-sm py-1 bg-tertiary-fixed-dim/20 text-on-tertiary-fixed-variant rounded-full font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                        AI-Powered Interpersonal Mentorship
+                    </div>
+<h1 class="font-headline-lg text-headline-lg md:text-[56px] md:leading-tight text-on-surface">
+                        Practice difficult <br class="hidden md:block"/> conversations with AI.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        Build confidence, resolve conflicts, and master the art of communication with PsyCoach AI. A safe space to refine your words before they leave your lips.
+                    </p>
+<div class="flex flex-col sm:flex-row items-center gap-md pt-sm">
+<button class="w-full sm:w-auto px-xl py-md bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-base">
+<!-- Jinja Logic: {% if current_user %}Start practice{% else %}Create account{% endif %} -->
+                            Start practice
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-full sm:w-auto px-xl py-md bg-secondary-container text-on-secondary-container rounded-xl font-label-md text-label-md hover:bg-surface-container-high transition-all">
+                            See how it works
+                        </button>
+</div>
+</div>
+<div class="flex-1 w-full max-w-md md:max-w-none">
+<div class="relative rounded-2xl overflow-hidden soft-elevation bg-surface-container-lowest p-xs">
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A sophisticated 3D digital illustration of two abstract human silhouettes engaged in a calm, glowing dialogue. Floating speech bubbles contain soft pulses of light in indigo and sage green, representing clarity and empathetic communication. The aesthetic is clean, minimalist, and professional, using a soft depth-of-field effect in a bright gallery-like space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTG5Mvc5KZDbrkXTCXabxJLttG7F0GMKd83RrUGz-PgPDHeZecAfizkp6Iy1zlcr7JFWNQhE34gyz5KaFtj5_4hxCdiiQoTnlQkx9BRPOxuG6V-QsLi7nmbt8pa3LcRkxBKsiR5Rd7YZgNSB2z7LTlRxfRmFLfgFn4mPsPikVVqtmZsbToea1DjWoGvGXwh2p5pdr3C1xd_Mi9CsRkcFjKR2HKUY9Rc1L6lfkV5UOxqRw-sGNYgDZ9nYdC7IXYh3mwHUTIpxhD2Sc"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-lg px-md bg-surface-container-low/50">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Master the art of empathy</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Intelligent tools designed to bring clarity to your relationships.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Roleplay Practice -->
+<div class="md:col-span-8 group relative bg-surface-container-lowest p-md rounded-2xl soft-elevation hover:translate-y-[-4px] transition-all duration-300 overflow-hidden">
+<div class="flex flex-col md:flex-row gap-lg">
+<div class="flex-1 space-y-sm">
+<div class="w-12 h-12 bg-primary-container/20 text-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Roleplay Practice</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                    Step into realistic scenarios like high-stakes job interviews or challenging friend conflicts. Our AI responds with nuance to help you build unshakeable confidence.
+                                </p>
+</div>
+<div class="flex-1 h-48 md:h-auto bg-surface-container rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A minimalist UI mockup of a chat interface. The chat bubbles are softly colored in indigo and light grey, showing a professional and calm conversation flow. The background is a crisp white with a subtle 8px grid pattern, reinforcing the 'Guided Clarity' brand theme and corporate minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKeCIq5qVH--ns52uodp2fKSy_1gX9qR3nhEkrIQTONC6NE_v0ANAvYxS_bDIIDpy50gz6U2sSNZNSoZv5PqB-o_rkMI4jaBQSmhhC2b4TAXwm91Knwbi3ufIwa-MIIyhCi_dzAOQaOz8ZJndw59iTuRLdIDB7s9kY4KNNn3MX1MpSYGM6E4yyAtkbBNhwYvsHbjW41JAnHmDSI2OpgwfOYe_YRWqovNPDUEImufrLzBPgD7lYcpDyr3es5XJ3QmnQ0c1bGslwnGg"/>
+</div>
+</div>
+</div>
+<!-- Conflict Analysis -->
+<div class="md:col-span-4 group bg-surface-container-lowest p-md rounded-2xl soft-elevation hover:translate-y-[-4px] transition-all duration-300">
+<div class="w-12 h-12 bg-tertiary-container/10 text-tertiary rounded-lg flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Conflict Analysis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Paste transcripts to get neutral feedback and identify hidden communication patterns before they escalate.
+                        </p>
+</div>
+<!-- Message Rewriting -->
+<div class="md:col-span-4 group bg-surface-container-lowest p-md rounded-2xl soft-elevation hover:translate-y-[-4px] transition-all duration-300">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Message Rewriting</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Transform your raw drafts into calm, assertive, or empathetic versions that hit the right tone every time.
+                        </p>
+</div>
+<!-- Perspective Switching -->
+<div class="md:col-span-8 group relative bg-surface-container-lowest p-md rounded-2xl soft-elevation hover:translate-y-[-4px] transition-all duration-300 overflow-hidden">
+<div class="flex flex-col md:flex-row-reverse gap-lg">
+<div class="flex-1 space-y-sm">
+<div class="w-12 h-12 bg-surface-variant text-on-surface-variant rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="published_with_changes">published_with_changes</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Perspective Switching</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                    Understand how others might interpret your words. See through the eyes of your colleague, partner, or manager with AI-driven empathy modeling.
+                                </p>
+</div>
+<div class="flex-1 h-48 md:h-auto bg-surface-container rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean conceptual illustration showing a single object viewed from three different artistic angles, rendered in a soft-shaded minimalist 3D style. The color palette uses muted sage, indigo, and slate, symbolizing different points of view coming together to form a clear understanding in a professional, mentorship context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBtIG3xKvpt3r3TsYwf1DLtPW94eQxQZZHpWWLU030eDWqlYH67RDrlF8oMdqfo8Q7gssw7809Dt3xTkIUy9LVyXHqEK0n-1I9LVgcuQjW2_kVVnGeSeG2X-blkScH3xAChHJU9U_NI8YO4D35YUKMaFTf-reYpC6FkhLpKQhJ11f2B8iMcr3pFo0UfMz5TvvjqKKZ0wpb9yu8_VW8NUoOIm5gNQD9ofIlt6vFoB0QXc8k7hWr7xED7g_wgQyc4kh4HU7ogIG1fGc"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-xl px-md">
+<div class="max-w-4xl mx-auto glass-card border border-white p-lg rounded-[2rem] text-center soft-elevation">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Ready to speak with clarity?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">
+                    Join thousands of professionals using PsyCoach AI to navigate their most important relationships.
+                </p>
+<div class="flex justify-center">
+<button class="px-xl py-md bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:shadow-lg transition-all active:scale-95">
+                        Get Started for Free
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs py-base bg-surface shadow-lg rounded-t-xl border-t border-outline-variant/10">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors rounded-full px-4" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-sm text-label-sm">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors rounded-full px-4" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-sm text-label-sm">Conflict</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors rounded-full px-4" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm">History</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="bg-surface-container-highest/30 py-lg px-md">
+<div class="max-w-container-max mx-auto border-t border-outline-variant/20 pt-md flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex items-center gap-base">
+<span class="font-label-md text-label-md font-bold text-secondary">PsyCoach AI</span>
+<span class="text-on-surface-variant text-label-sm opacity-60">© 2024 Guided Clarity Inc.</span>
+</div>
+<div class="flex gap-lg">
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for hover effects on bento cards
+        document.querySelectorAll('.soft-elevation').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

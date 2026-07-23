@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create account | PsyCoach AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "tertiary-fixed-dim": "#4edea3",
+                "primary-fixed": "#e2dfff",
+                "outline-variant": "#c7c4d8",
+                "on-error": "#ffffff",
+                "on-surface": "#191c1e",
+                "surface-variant": "#e0e3e5",
+                "on-tertiary-fixed": "#002113",
+                "on-secondary-fixed": "#0b1c30",
+                "surface-container-high": "#e6e8ea",
+                "primary": "#3525cd",
+                "on-primary-fixed": "#0f0069",
+                "primary-fixed-dim": "#c3c0ff",
+                "surface-tint": "#4d44e3",
+                "inverse-on-surface": "#eff1f3",
+                "surface": "#f7f9fb",
+                "on-primary": "#ffffff",
+                "error": "#ba1a1a",
+                "surface-container-low": "#f2f4f6",
+                "outline": "#777587",
+                "secondary": "#505f76",
+                "on-tertiary-container": "#67f4b7",
+                "on-secondary": "#ffffff",
+                "on-secondary-container": "#54647a",
+                "inverse-surface": "#2d3133",
+                "error-container": "#ffdad6",
+                "on-secondary-fixed-variant": "#38485d",
+                "tertiary-fixed": "#6ffbbe",
+                "inverse-primary": "#c3c0ff",
+                "on-surface-variant": "#464555",
+                "surface-bright": "#f7f9fb",
+                "tertiary-container": "#006e4b",
+                "background": "#f7f9fb",
+                "on-primary-container": "#dad7ff",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-fixed-variant": "#005236",
+                "surface-container": "#eceef0",
+                "on-background": "#191c1e",
+                "on-error-container": "#93000a",
+                "secondary-fixed-dim": "#b7c8e1",
+                "surface-container-highest": "#e0e3e5",
+                "on-primary-fixed-variant": "#3323cc",
+                "secondary-container": "#d0e1fb",
+                "tertiary": "#005338",
+                "primary-container": "#4f46e5",
+                "on-tertiary": "#ffffff",
+                "surface-dim": "#d8dadc",
+                "secondary-fixed": "#d3e4fe"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "xs": "4px",
+                "xl": "80px",
+                "base": "8px",
+                "sm": "12px",
+                "lg": "48px",
+                "md": "24px",
+                "gutter": "24px",
+                "container-max": "1200px"
+            },
+            "fontFamily": {
+                "label-md": ["Inter"],
+                "headline-lg-mobile": ["Manrope"],
+                "headline-md": ["Manrope"],
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-lg": ["Manrope"],
+                "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .registration-card {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+        .form-input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col">
+<!-- Navigation suppressed per 'Transactional' screen rules -->
+<main class="flex-grow flex items-center justify-center px-gutter py-xl relative overflow-hidden">
+<!-- Ambient Atmospheric Background -->
+<div class="absolute inset-0 pointer-events-none opacity-40">
+
+</div>
+<div class="z-10 w-full max-w-container-max flex flex-col md:flex-row gap-lg items-center justify-center">
+<!-- Branding/Value Prop Column -->
+<div class="hidden lg:flex flex-col max-w-md gap-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="psychology">psychology</span>
+<h1 class="font-headline-lg text-headline-lg text-primary">PsyCoach AI</h1>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Master your interpersonal dynamics.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Join PsyCoach AI to start practicing communication skills in a safe, private space. Our AI-driven insights act as a calm mentor for your personal growth.
+                </p>
+<div class="mt-base flex flex-col gap-sm">
+<div class="flex items-center gap-base">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="security">security</span>
+</div>
+<span class="font-label-md text-label-md">100% Private Sessions</span>
+</div>
+<div class="flex items-center gap-base">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed" data-icon="insights">insights</span>
+</div>
+<span class="font-label-md text-label-md">Real-time Clarity Reports</span>
+</div>
+</div>
+</div>
+<!-- Registration Form Card -->
+<div class="registration-card bg-surface-container-lowest p-md md:p-lg rounded-xl w-full max-w-[480px] border border-outline-variant/30">
+<div class="mb-lg text-center md:text-left">
+<div class="lg:hidden flex justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-5xl" data-icon="psychology">psychology</span>
+</div>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Create account</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Step into your growth journey today.</p>
+</div>
+<!-- Error Messages -->
+                {% if error %}
+                <div class="alert error mb-md p-sm bg-error-container text-on-error-container rounded-lg flex items-center gap-sm font-label-md border border-error/20">
+<span class="material-symbols-outlined text-error" data-icon="error">error</span>
+                    {{ error }}
+                </div>
+                {% endif %}
+
+                <form action="" class="space-y-md" method="POST">
+<!-- Username Input -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="username">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline" data-icon="person">person</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-low border border-outline-variant rounded-lg text-on-surface font-body-md placeholder:text-outline/50 transition-all focus:outline-none focus:border-primary form-input-focus" id="username" maxlength="80" name="username" placeholder="Jane Doe" required="" type="text"/>
+</div>
+</div>
+<!-- Email Input -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline" data-icon="mail">mail</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-low border border-outline-variant rounded-lg text-on-surface font-body-md placeholder:text-outline/50 transition-all focus:outline-none focus:border-primary form-input-focus" id="email" name="email" placeholder="jane@example.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Password</label>
+<span class="text-[10px] uppercase tracking-wider text-outline">Min. 8 characters</span>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline" data-icon="lock">lock</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-low border border-outline-variant rounded-lg text-on-surface font-body-md placeholder:text-outline/50 transition-all focus:outline-none focus:border-primary form-input-focus" id="password" minlength="8" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Terms checkbox -->
+<div class="flex items-start gap-sm py-xs">
+<input class="mt-1 w-4 h-4 rounded text-primary focus:ring-primary border-outline-variant" id="terms" required="" type="checkbox"/>
+<label class="text-label-sm font-label-sm text-on-surface-variant leading-relaxed" for="terms">
+                            I agree to the <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary text-on-primary py-sm rounded-lg font-label-md text-label-md font-bold transition-all hover:bg-primary/90 active:scale-95 shadow-sm" type="submit">
+                        Create account
+                    </button>
+</form>
+<!-- Footer Links -->
+<div class="mt-lg pt-md border-t border-outline-variant/10 text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-primary font-bold hover:underline" href="/login">Log in</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Visual Polish / Subtle Footer -->
+<footer class="py-md text-center">
+<p class="font-label-sm text-label-sm text-outline opacity-60 uppercase tracking-widest">© 2024 PsyCoach AI. Guided Clarity for a Better You.</p>
+</footer>
+<script>
+        // Micro-interaction: Subtle hover effect on inputs
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = 'var(--primary)';
+                input.parentElement.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '';
+                input.parentElement.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+            });
+        });
+    </script>
+</body></html>

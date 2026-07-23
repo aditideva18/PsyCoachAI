@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PsyCoach AI | Practice Simulator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed": "#d3e4fe",
+                      "inverse-primary": "#c3c0ff",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "surface-variant": "#e0e3e5",
+                      "on-secondary-container": "#54647a",
+                      "tertiary-container": "#006e4b",
+                      "surface-container-highest": "#e0e3e5",
+                      "primary-container": "#4f46e5",
+                      "surface-bright": "#f7f9fb",
+                      "on-primary-fixed-variant": "#3323cc",
+                      "primary-fixed": "#e2dfff",
+                      "secondary-container": "#d0e1fb",
+                      "on-tertiary-fixed": "#002113",
+                      "on-surface": "#191c1e",
+                      "on-background": "#191c1e",
+                      "on-secondary": "#ffffff",
+                      "surface": "#f7f9fb",
+                      "on-surface-variant": "#464555",
+                      "on-error": "#ffffff",
+                      "background": "#f7f9fb",
+                      "on-tertiary-container": "#67f4b7",
+                      "on-secondary-fixed": "#0b1c30",
+                      "tertiary": "#005338",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-primary-fixed": "#0f0069",
+                      "on-primary-container": "#dad7ff",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#2d3133",
+                      "surface-dim": "#d8dadc",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "surface-container-low": "#f2f4f6",
+                      "outline-variant": "#c7c4d8",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "surface-container": "#eceef0",
+                      "primary": "#3525cd",
+                      "surface-container-high": "#e6e8ea",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#4d44e3",
+                      "secondary": "#505f76",
+                      "outline": "#777587"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "sm": "12px",
+                      "lg": "48px",
+                      "base": "8px",
+                      "xs": "4px",
+                      "md": "24px",
+                      "container-max": "1200px",
+                      "xl": "80px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "headline-md": ["Manrope"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Manrope"],
+                      "headline-lg": ["Manrope"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chat-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-container::-webkit-scrollbar-thumb {
+            background-color: #E2E8F0;
+            border-radius: 10px;
+        }
+        /* Message bubble styles override from system to match logic */
+        .message.ai {
+            @apply bg-[#EEF2FF] text-[#1E1B4B] rounded-tr-xl rounded-bl-xl rounded-br-xl p-4 mb-4 self-start max-w-[85%] font-body-md text-body-md shadow-sm;
+        }
+        .message.user {
+            @apply bg-[#F8FAFC] text-[#0F172A] rounded-tl-xl rounded-bl-xl rounded-br-xl p-4 mb-4 self-end max-w-[85%] font-body-md text-body-md shadow-sm border border-slate-100;
+        }
+        #chat {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden md:flex flex-col h-screen p-md gap-lg bg-surface-container-low w-64 flex-shrink-0 sticky top-0">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-primary">PsyCoach AI</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Guided Clarity</span>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-sm flex-grow">
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="/dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-base bg-secondary-container text-on-secondary-container rounded-lg px-md py-sm transition-transform scale-98" href="/practice">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">Practice</span>
+</a>
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="/conflict">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-md text-label-md">Conflict</span>
+</a>
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="/history">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+</nav>
+<div class="flex flex-col gap-sm mt-auto pt-md border-t border-outline-variant/10">
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="/settings">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="/logout">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Mobile Top Bar -->
+<header class="md:hidden flex justify-between items-center w-full px-md py-sm bg-surface shadow-sm sticky top-0 z-50">
+<span class="font-headline-md text-headline-md font-bold text-primary">PsyCoach AI</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow p-md md:p-lg max-w-container-max mx-auto w-full">
+<header class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Practice Simulator</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Hone your interpersonal skills in a safe, AI-guided environment.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md items-start">
+<!-- Simulator Control Panel -->
+<section class="lg:col-span-4 flex flex-col gap-md">
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05)] border border-slate-50">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">tune</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Configuration</h2>
+</div>
+<div class="flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="scenario">Scenario</label>
+<select class="w-full bg-surface-container border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none cursor-pointer" id="scenario">
+                                {% for key,item in scenarios.items() %}
+                                <option value="{{ key }}">{{ item.title }}</option>
+                                {% endfor %}
+                            </select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="difficulty">Difficulty</label>
+<select class="w-full bg-surface-container border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none cursor-pointer" id="difficulty">
+                                {% for item in difficulties %}
+                                <option value="{{ item }}">{{ item|title }}</option>
+                                {% endfor %}
+                            </select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="personality">Personality</label>
+<select class="w-full bg-surface-container border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none cursor-pointer" id="personality">
+                                {% for item in personalities %}
+                                <option value="{{ item }}">{{ item|title }}</option>
+                                {% endfor %}
+                            </select>
+</div>
+<div class="flex flex-col gap-sm pt-sm">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl shadow-md hover:bg-primary-container transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-base" id="start">
+<span class="material-symbols-outlined">play_circle</span>
+                                Start Session
+                            </button>
+<button class="hidden w-full bg-error text-on-error font-label-md text-label-md py-4 rounded-xl shadow-md hover:opacity-90 transition-all active:scale-95 flex items-center justify-center gap-base" id="end">
+<span class="material-symbols-outlined">analytics</span>
+                                End and Analyze
+                            </button>
+</div>
+<div class="hidden font-body-md text-body-md p-md rounded-lg text-center mt-sm" id="status"></div>
+</div>
+</div>
+<div class="bg-tertiary-fixed/10 border border-tertiary-fixed/30 rounded-xl p-md">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-tertiary mt-1">lightbulb</span>
+<div class="flex flex-col">
+<h3 class="font-label-md text-label-md font-bold text-tertiary uppercase tracking-wider mb-1">Coaching Tip</h3>
+<p class="font-body-md text-body-md text-on-tertiary-fixed-variant">Active listening is key. Try reflecting the simulator's emotion back to them to build rapport before problem-solving.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Chat Interface Section -->
+<section class="lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05)] border border-slate-50 flex flex-col h-[650px]">
+<div class="px-md py-sm border-b border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(0,83,56,0.5)] animate-pulse"></div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Session Live</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">v2.4 AI Model</span>
+</div>
+<!-- Chat Log -->
+<div class="chat-container flex-grow overflow-y-auto p-md space-y-md chat" id="chat">
+<div class="flex flex-col items-center justify-center h-full text-center text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-[48px] mb-sm">forum</span>
+<p class="font-body-md text-body-md">Adjust settings and click "Start Session" to begin practicing.</p>
+</div>
+</div>
+<!-- Input Area -->
+<div class="hidden p-md border-t border-outline-variant/10" id="entry">
+<div class="flex flex-col gap-sm">
+<textarea class="w-full bg-surface border border-outline-variant rounded-xl p-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none shadow-inner" id="message" placeholder="Type your response..." rows="3"></textarea>
+<div class="flex justify-end items-center gap-md">
+<span class="font-label-sm text-label-sm text-outline hidden md:block">Press Shift + Enter for new line</span>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md text-label-md shadow-md hover:bg-primary-container transition-all active:scale-95 flex items-center gap-base" id="send">
+                                Send
+                                <span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Analysis Report Section -->
+<section class="hidden mt-lg bg-surface-container-lowest rounded-xl p-lg shadow-[0_12px_32px_-4px_rgba(79,70,229,0.08)] border border-primary/10" id="report">
+<header class="flex items-center gap-sm mb-lg">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">assessment</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Session Analysis</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Here is how you performed in this scenario.</p>
+</div>
+</header>
+<div class="space-y-lg" id="reportBody">
+<!-- Data injected by script -->
+</div>
+</section>
+</main>
+<!-- Mobile Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs py-base bg-surface shadow-lg rounded-t-xl border-t border-outline-variant/10">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="/dashboard">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm-mobile">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-90" href="/practice">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-sm text-label-sm-mobile">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="/conflict">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm-mobile">Conflict</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="/history">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-sm text-label-sm-mobile">History</span>
+</a>
+</nav>
+<script>
+        let sid = null;
+        const q = id => document.getElementById(id);
+        
+        function msg(role, text) {
+            let chatContainer = q('chat');
+            // Remove the empty state placeholder on first message
+            if (chatContainer.querySelector('.opacity-60')) {
+                chatContainer.innerHTML = '';
+            }
+            
+            let d = document.createElement('div');
+            d.className = 'message ' + role;
+            d.textContent = text;
+            chatContainer.appendChild(d);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function status(t, e = false) {
+            q('status').textContent = t;
+            q('status').classList.remove('hidden');
+            q('status').className = 'font-body-md text-body-md p-md rounded-lg text-center mt-sm ' + 
+                (e ? 'bg-error-container text-on-error-container' : 'bg-tertiary-fixed text-on-tertiary-fixed');
+        }
+
+        async function api(url, data) {
+            let r = await fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            let j = await r.json();
+            if (!r.ok || !j.success) throw new Error(j.message || 'Request failed');
+            return j.data;
+        }
+
+        q('start').onclick = async () => {
+            try {
+                q('start').disabled = true;
+                let d = await api('/api/practice/start', {
+                    scenario: q('scenario').value,
+                    difficulty: q('difficulty').value,
+                    personality: q('personality').value
+                });
+                sid = d.practice_session_id;
+                q('chat').innerHTML = '';
+                msg('ai', d.reply);
+                q('entry').classList.remove('hidden');
+                q('end').classList.remove('hidden');
+                q('start').classList.add('hidden');
+                status('Session started');
+                q('report').classList.add('hidden');
+            } catch (e) {
+                status(e.message, true);
+                q('start').disabled = false;
+            }
+        };
+
+        q('send').onclick = async () => {
+            let t = q('message').value.trim();
+            if (!t) return;
+            msg('user', t);
+            q('message').value = '';
+            try {
+                let d = await api('/api/practice/message', {
+                    practice_session_id: sid,
+                    message: t
+                });
+                msg('ai', d.crisis_detected ? d.message : d.reply);
+            } catch (e) {
+                status(e.message, true);
+            }
+        };
+
+        q('message').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                q('send').click();
+            }
+        });
+
+        q('end').onclick = async () => {
+            try {
+                let d = await api('/api/practice/end', {practice_session_id: sid});
+                let a = d.analysis, s = a.scores || {};
+                
+                let scoresHtml = Object.entries(s).map(([k, v]) => `
+                    <div class="space-y-1 mb-4">
+                        <div class="flex justify-between font-label-md text-label-md">
+                            <span class="capitalize text-on-surface-variant">${k.replaceAll('_', ' ')}</span>
+                            <span class="font-bold text-primary">${v}/10</span>
+                        </div>
+                        <div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+                            <div class="bg-primary h-full rounded-full transition-all duration-1000" style="width:${v * 10}%"></div>
+                        </div>
+                    </div>
+                `).join('');
+
+                q('reportBody').innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+                        <div class="space-y-md">
+                            <div class="bg-surface-container p-md rounded-xl border border-outline-variant/10">
+                                <h3 class="font-headline-md text-headline-md mb-2">Summary</h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">${a.summary || 'No summary available.'}</p>
+                            </div>
+                            <div class="bg-surface-container p-md rounded-xl border border-outline-variant/10">
+                                <h3 class="font-headline-md text-headline-md mb-4 text-tertiary">Performance Metrics</h3>
+                                ${scoresHtml}
+                            </div>
+                        </div>
+                        <div class="space-y-md">
+                            <div class="bg-tertiary-fixed/10 p-md rounded-xl border border-tertiary-fixed/30">
+                                <h3 class="font-label-md text-label-md font-bold text-tertiary uppercase tracking-wider mb-4 flex items-center gap-xs">
+                                    <span class="material-symbols-outlined text-[20px]">thumb_up</span>
+                                    Key Strengths
+                                </h3>
+                                <ul class="space-y-2">
+                                    ${(a.strengths || []).map(x => `<li class="font-body-md text-body-md flex items-start gap-xs"><span class="text-tertiary">•</span> ${x}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="bg-error-container/10 p-md rounded-xl border border-error-container/30">
+                                <h3 class="font-label-md text-label-md font-bold text-error uppercase tracking-wider mb-4 flex items-center gap-xs">
+                                    <span class="material-symbols-outlined text-[20px]">trending_up</span>
+                                    Areas for Growth
+                                </h3>
+                                <ul class="space-y-2">
+                                    ${(a.improvement_areas || []).map(x => `<li class="font-body-md text-body-md flex items-start gap-xs"><span class="text-error">•</span> ${x}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="pt-4">
+                                <a href='/report/${d.analysis_id}' class='w-full bg-secondary text-on-secondary px-6 py-4 rounded-xl font-label-md text-label-md text-center inline-block hover:opacity-90 transition-all shadow-sm'>
+                                    Open saved full report
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                q('report').classList.remove('hidden');
+                q('report').scrollIntoView({ behavior: 'smooth' });
+                q('entry').classList.add('hidden');
+                q('end').classList.add('hidden');
+                q('start').classList.remove('hidden');
+                q('start').disabled = false;
+                sid = null;
+                status('Analysis complete. Great work!');
+            } catch (e) {
+                status(e.message, true);
+            }
+        };
+    </script>
+</body></html>
