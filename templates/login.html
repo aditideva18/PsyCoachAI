@@ -151,7 +151,7 @@
 </div>
                 {% endif %}
 
-                <form action="" class="space-y-md" method="POST">
+                <form action="{{ url_for('login_page') }}" class="space-y-md" method="POST">
 <!-- Email Input -->
 <div class="space-y-xs">
 <label class="font-label-md text-on-surface-variant block" for="email">Email Address</label>
@@ -187,7 +187,7 @@
 <div class="text-center">
 <p class="font-body-md text-on-surface-variant">
                         Don't have an account? 
-                        <a class="text-primary font-semibold hover:underline" href="/register">Create Account</a>
+                        <a class="text-primary font-semibold hover:underline" href="{{ url_for('register_page') }}">Create Account</a>
 </p>
 </div>
 </div>
