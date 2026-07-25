@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>History - PsyCoach AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Load the Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e0e3e5",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#c3c0ff",
+                    "outline-variant": "#c7c4d8",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "secondary-fixed": "#d3e4fe",
+                    "outline": "#777587",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#464555",
+                    "on-primary-fixed": "#0f0069",
+                    "on-background": "#191c1e",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "secondary-container": "#d0e1fb",
+                    "tertiary-container": "#006e4b",
+                    "on-primary-container": "#dad7ff",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-container-low": "#f2f4f6",
+                    "on-error": "#ffffff",
+                    "background": "#f7f9fb",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-container-high": "#e6e8ea",
+                    "surface": "#f7f9fb",
+                    "primary-fixed": "#e2dfff",
+                    "surface-dim": "#d8dadc",
+                    "tertiary": "#005338",
+                    "on-surface": "#191c1e",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary-container": "#54647a",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-container": "#67f4b7",
+                    "primary-container": "#4f46e5",
+                    "on-primary": "#ffffff",
+                    "secondary": "#505f76",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface-tint": "#4d44e3",
+                    "on-secondary-fixed": "#0b1c30",
+                    "primary": "#3525cd",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed": "#002113",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "base": "8px",
+                    "lg": "48px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "container-max": "1200px",
+                    "xl": "80px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Manrope"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+        body {
+            background-color: #f7f9fb;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-item-active {
+            scale: 0.98;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- Sidebar (Desktop Only) -->
+<aside class="hidden md:flex flex-col h-screen p-md gap-lg bg-surface-container-low w-64 fixed left-0 top-0 border-r border-outline-variant/10">
+<div class="flex flex-col gap-xs">
+<div class="font-headline-md text-headline-md font-bold text-primary px-sm">
+                PsyCoach AI
+            </div>
+<div class="font-label-md text-label-md text-on-surface-variant px-sm">
+                Guided Clarity
+            </div>
+</div>
+<nav class="flex flex-col gap-base flex-grow">
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">Practice</span>
+</a>
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-md text-label-md">Conflict</span>
+</a>
+<a class="flex items-center gap-base bg-secondary-container text-on-secondary-container rounded-lg px-md py-sm transition-transform scale-98" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-base border-t border-outline-variant/20 pt-md">
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-base text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow md:ml-64 pb-24 md:pb-md">
+<!-- TopAppBar (Web Desktop) -->
+<header class="hidden md:flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto bg-surface shadow-sm sticky top-0 z-40">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">History</h1>
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-low transition-colors duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">
+                    JD
+                </div>
+</div>
+</header>
+<!-- Mobile Header -->
+<header class="md:hidden flex items-center justify-between px-md py-sm bg-surface sticky top-0 z-40">
+<div class="font-headline-md text-headline-md font-bold text-primary">PsyCoach</div>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container text-xs font-bold">JD</div>
+</header>
+<div class="max-w-container-max mx-auto px-md py-md lg:py-xl">
+<!-- Asymmetric Hero Section for History -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-lg">
+<div class="lg:col-span-8">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-base">Session Archive</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                        Review your journey through interpersonal development. Every recorded session provides unique AI insights to refine your communication style and emotional intelligence.
+                    </p>
+</div>
+<div class="lg:col-span-4 flex items-end justify-start lg:justify-end">
+<div class="flex gap-sm">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-md py-sm rounded-xl flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-md">12% Growth</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Filters/Search Micro-interaction area -->
+<div class="flex flex-wrap gap-base mb-md">
+<div class="relative flex-grow max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-label-md" placeholder="Search sessions..." type="text"/>
+</div>
+<button class="flex items-center gap-xs px-md py-2 border border-outline-variant rounded-xl hover:bg-surface-container-high transition-colors font-label-md">
+<span class="material-symbols-outlined">filter_list</span> Filter
+                </button>
+</div>
+<!-- History Loop - Bento Grid Style -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+                {% for item in history %}
+                <article class="soft-shadow bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col hover:-translate-y-1 transition-transform duration-300">
+<div class="p-md flex-grow">
+<div class="flex justify-between items-start mb-sm">
+<div class="bg-secondary-fixed text-on-secondary-fixed px-2 py-1 rounded text-[10px] uppercase font-bold tracking-wider">
+                                {{ item.category if item.category else 'Communication' }}
+                            </div>
+<span class="font-label-sm text-on-surface-variant opacity-60">
+                                {{ item.timestamp if item.timestamp else 'Recently' }}
+                            </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-base">{{ item.title }}</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-md">
+                            {{ item.analysis.summary if item.analysis and item.analysis.summary else 'Saved report' }}
+                        </p>
+</div>
+<div class="p-md pt-0 mt-auto border-t border-outline-variant/10">
+<a class="w-full flex items-center justify-center gap-base px-md py-3 bg-secondary-container text-on-secondary-container rounded-lg font-label-md hover:opacity-90 transition-opacity button secondary" href='{{ url_for("report_page", analysis_id=item.id) }}'>
+<span class="material-symbols-outlined text-body-md">analytics</span>
+                            Open report
+                        </a>
+</div>
+</article>
+                {% else %}
+                <div class="col-span-full py-xl flex flex-col items-center justify-center text-center bg-surface-container-low border-2 border-dashed border-outline-variant rounded-xl px-md">
+<div class="w-16 h-16 bg-surface rounded-full flex items-center justify-center mb-md text-outline">
+<span class="material-symbols-outlined text-4xl">folder_off</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs">No saved reports yet.</h3>
+<p class="font-body-md text-on-surface-variant mb-lg">Complete your first practice session to see your growth history here.</p>
+<a class="bg-primary text-on-primary px-xl py-3 rounded-full font-label-md soft-shadow" href="#">Start New Session</a>
+</div>
+                {% endfor %}
+            </div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs py-base md:hidden bg-surface rounded-t-xl shadow-lg border-t border-outline-variant/10">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Conflict</span>
+</a>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-90 duration-150">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">History</span>
+</div>
+</nav>
+<!-- Floating Atmosphere Elements -->
+<div class="fixed top-0 right-0 w-1/3 h-1/3 bg-primary-fixed/5 blur-3xl pointer-events-none -z-10 rounded-full"></div>
+<div class="fixed bottom-0 left-0 w-1/4 h-1/4 bg-tertiary-fixed/5 blur-3xl pointer-events-none -z-10 rounded-full"></div>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('article').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('.button').classList.add('scale-[1.02]');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.button').classList.remove('scale-[1.02]');
+            });
+        });
+    </script>
+</body></html>
