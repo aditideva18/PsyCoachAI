@@ -251,19 +251,19 @@
 <!-- BottomNavBar (Mobile Only) -->
     {% if current_user %}
     <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs py-base md:hidden bg-surface shadow-lg rounded-t-xl border-t border-surface-container">
-<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'dashboard' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="{{ url_for('dashboard') }}">
+<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'dashboard' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/dashboard">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-label-sm text-[10px]">Dashboard</span>
 </a>
-<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'practice' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="{{ url_for('practice') }}">
+<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'practice' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/practice">
 <span class="material-symbols-outlined">forum</span>
 <span class="font-label-sm text-[10px]">Practice</span>
 </a>
-<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'conflict' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="{{ url_for('conflict') }}">
+<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'conflict' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/conflict">
 <span class="material-symbols-outlined">psychology</span>
 <span class="font-label-sm text-[10px]">Conflict</span>
 </a>
-<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'history' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="{{ url_for('history') }}">
+<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'history' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/history">
 <span class="material-symbols-outlined">history</span>
 <span class="font-label-sm text-[10px]">History</span>
 </a>
