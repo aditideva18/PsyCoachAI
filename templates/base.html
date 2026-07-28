@@ -217,10 +217,10 @@
 <!-- Navigation Links (Desktop) -->
 <nav class="hidden md:flex items-center gap-8">
                 {% if current_user %}
-                    <a class="font-label-md text-label-md transition-all duration-200 {% if request.endpoint == 'dashboard' %}text-primary border-b-2 border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %}" href="{{ url_for('dashboard') }}">Dashboard</a>
-<a class="font-label-md text-label-md transition-all duration-200 {% if request.endpoint == 'practice' %}text-primary border-b-2 border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %}" href="{{ url_for('practice') }}">Practice</a>
-<a class="font-label-md text-label-md transition-all duration-200 {% if request.endpoint == 'conflict' %}text-primary border-b-2 border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %}" href="{{ url_for('conflict') }}">Conflict</a>
-<a class="font-label-md text-label-md transition-all duration-200 {% if request.endpoint == 'history' %}text-primary border-b-2 border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %}" href="{{ url_for('history') }}">History</a>
+                    <a class="font-label-md text-label-md transition-all duration-200 {% if request.endpoint == 'dashboard_page' %}text-primary border-b-2 border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %}" href="{{ url_for('dashboard_page') }}">Dashboard</a>
+<a class="font-label-md text-label-md transition-all duration-200 {% if request.endpoint == 'practice_page' %}text-primary border-b-2 border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %}" href="{{ url_for('practice_page') }}">Practice</a>
+<a class="font-label-md text-label-md transition-all duration-200 {% if request.endpoint == 'conflict_page' %}text-primary border-b-2 border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %}" href="{{ url_for('conflict_page') }}">Conflict</a>
+<a class="font-label-md text-label-md transition-all duration-200 {% if request.endpoint == 'history_page' %}text-primary border-b-2 border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %}" href="{{ url_for('history_page') }}">History</a>
                 {% endif %}
             </nav>
 <!-- Trailing Action Cluster -->
@@ -232,14 +232,14 @@
 </div>
 <span class="font-label-md text-on-surface-variant">{{ current_user.username }}</span>
 </div>
-<form action="{{ url_for('logout') }}" method="post" style="display:inline">
+<form action="{{ url_for('logout_page') }}" method="post" style="display:inline">
 <button class="btn-secondary text-sm px-4 py-2 flex items-center gap-2">
 <span class="material-symbols-outlined text-[20px]">logout</span>
                             Logout
                         </button>
 </form>
                 {% else %}
-                    <a class="btn-primary" href="{{ url_for('login') }}">Login</a>
+                    <a class="btn-primary" href="{{ url_for('login_page') }}">Login</a>
                 {% endif %}
             </div>
 </div>
@@ -251,19 +251,19 @@
 <!-- BottomNavBar (Mobile Only) -->
     {% if current_user %}
     <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs py-base md:hidden bg-surface shadow-lg rounded-t-xl border-t border-surface-container">
-<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'dashboard' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/dashboard">
+<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'dashboard_page' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/dashboard">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-label-sm text-[10px]">Dashboard</span>
 </a>
-<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'practice' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/practice">
+<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'practice_page' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/practice">
 <span class="material-symbols-outlined">forum</span>
 <span class="font-label-sm text-[10px]">Practice</span>
 </a>
-<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'conflict' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/conflict">
+<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'conflict_page' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/conflict">
 <span class="material-symbols-outlined">psychology</span>
 <span class="font-label-sm text-[10px]">Conflict</span>
 </a>
-<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'history' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/history">
+<a class="flex flex-col items-center justify-center gap-1 p-2 {% if request.endpoint == 'history_page' %}bg-primary-container text-on-primary-container rounded-full px-4 py-1{% else %}text-on-surface-variant{% endif %}" href="https://psycoachai.onrender.com/history">
 <span class="material-symbols-outlined">history</span>
 <span class="font-label-sm text-[10px]">History</span>
 </a>
